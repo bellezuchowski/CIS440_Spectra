@@ -35,7 +35,7 @@ logonForm.addEventListener('submit', async (event) => {
         const result = await response.json();
         if (response.ok) {
             localStorage.setItem('jwtToken', result.token);
-            window.location.href = '/dashboard';
+            window.location.href = '/profile';
         } else {
             messageEl.textContent = result.message;
             messageEl.classList.add('error');
@@ -52,12 +52,14 @@ createAccountForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     const email = document.getElementById('create-email').value;
     const password = document.getElementById('create-password').value;
-
+    const firstName = document.getElementById('create-first-name').value;
+    const lastName = document.getElementById('create-last-name').value;
+    const dateOfBirth = document.getElementById('create-date-of-birth').value;
     try {
         const response = await fetch('/api/create-account', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password }),
+            body: JSON.stringify({ email, password, firstName, lastName, dateOfBirth }),
         });
 
         const result = await response.json();

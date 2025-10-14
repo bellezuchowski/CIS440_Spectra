@@ -25,6 +25,11 @@ app.get('/', (req, res) => {
 app.get('/dashboard', (req, res) => {
     res.sendFile(__dirname + '/public/dashboard.html');
 });
+
+// Route to serve profile.html
+app.get('/profile', (req, res) => {
+    res.sendFile(__dirname + '/public/profile.html');
+});
 //////////////////////////////////////
 //END ROUTES TO SERVE HTML FILES
 //////////////////////////////////////
@@ -89,7 +94,7 @@ async function authenticateToken(req, res, next) {
 //////////////////////////////////////
 // Route: Create Account
 app.post('/api/create-account', async (req, res) => {
-    const { email, password } = req.body;
+    const { email, password, firstName, lastName, dateOfBirth } = req.body;
 
     if (!email || !password) {
         return res.status(400).json({ message: 'Email and password are required.' });
@@ -100,8 +105,8 @@ app.post('/api/create-account', async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);  // Hash password
 
         const [result] = await connection.execute(
-            'INSERT INTO user (email, password) VALUES (?, ?)',
-            [email, hashedPassword]
+            'INSERT INTO user (email, password, first_name, last_name, date_of_birth) VALUES (?, ?, ?, ?, ?)',
+            [email, hashedPassword, firstName, lastName, dateOfBirth]
         );
 
         await connection.end();  // Close connection
@@ -156,6 +161,35 @@ app.post('/api/login', async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Error logging in.' });
+    }
+});
+
+// Route: Get User Profile
+app.get('/api/profile', authenticateToken, async (req, res) => {
+    try {
+        const connection = await createConnection();
+        
+        const [rows] = await connection.execute(
+            'SELECT email, first_name, last_name, date_of_birth FROM user WHERE email = ?',
+            [req.user.email]
+        );
+
+        await connection.end();
+
+        if (rows.length === 0) {
+            return res.status(404).json({ message: 'User not found.' });
+        }
+
+        const user = rows[0];
+        res.status(200).json({
+            email: user.email,
+            firstName: user.first_name,
+            lastName: user.last_name,
+            dateOfBirth: user.date_of_birth
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Error fetching profile.' });
     }
 });
 
