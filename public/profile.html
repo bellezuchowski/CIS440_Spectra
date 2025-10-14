@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Spectra</title>
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <img src="Assets/Logo.svg" alt="Spectra Logo" width="50px">
+                <h1>Spectra Profile</h1>
+                <button id="logout-btn" class="logout-button">Logout</button>
+            </div>
+        </header>
+
+        <div class="profile-content">
+            <div class="profile-card">
+                <h2>Welcome, <span id="user-name">User</span>!</h2>
+                
+                <div class="profile-info">
+                    <div class="info-item">
+                        <label>Email:</label>
+                        <span id="user-email">Loading...</span>
+                    </div>
+                    
+                    <div class="info-item">
+                        <label>First Name:</label>
+                        <span id="user-first-name">Loading...</span>
+                    </div>
+                    
+                    <div class="info-item">
+                        <label>Last Name:</label>
+                        <span id="user-last-name">Loading...</span>
+                    </div>
+                    
+                    <div class="info-item">
+                        <label>Date of Birth:</label>
+                        <span id="user-dob">Loading...</span>
+                    </div>
+                </div>
+
+                <div class="profile-actions">
+                    <button id="edit-profile-btn" class="button">Edit Profile</button>
+                    <button id="go-to-dashboard-btn" class="button secondary">Go to Dashboard</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/profile.js"></script>
+</body>
+
+</html>

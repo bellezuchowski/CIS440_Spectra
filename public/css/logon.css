@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f4f9;
+    background-color: #F3F9D2;
     margin: 0;
     padding: 0;
 }
@@ -34,7 +34,7 @@ h1 {
 }
 
 .tab-button.active {
-    background-color: #4caf50;
+    background-color: #2B4162;
     color: white;
 }
 
@@ -53,7 +53,8 @@ label {
 
 input {
     width: 100%;
-    padding: 10px;
+    max-width: 400px;
+    padding: 10px 0;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -62,7 +63,7 @@ input {
 .button {
     width: 100%;
     padding: 10px;
-    background-color: #4caf50;
+    background-color: #2B4162;
     color: white;
     border: none;
     border-radius: 5px;
@@ -70,7 +71,7 @@ input {
 }
 
 .button:hover {
-    background-color: #45a049;
+    background-color: #ACC8E5;
 }
 
 .message {

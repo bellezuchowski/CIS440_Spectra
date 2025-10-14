@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" role="img" xmlns="http://www.w3.org/2000/svg" aria-labelledby="title desc">
+  <title id="title">Buff Plant</title>
+  <desc id="desc">A cartoon potted plant with muscular arms flexing.</desc>
+  <defs>
+    <linearGradient id="potGrad" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#B5651D"/>
+      <stop offset="100%" stop-color="#7A4212"/>
+    </linearGradient>
+    <linearGradient id="leafGrad" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#43a047"/>
+      <stop offset="100%" stop-color="#2e7d32"/>
+    </linearGradient>
+    <linearGradient id="armGrad" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f7c08a"/>
+      <stop offset="100%" stop-color="#e1a76f"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-opacity="0.25"/>
+    </filter>
+    <style>
+      .outline { stroke:#1f1f1f; stroke-width:4; stroke-linecap:round; stroke-linejoin:round; }
+    </style>
+  </defs>
+
+  <!-- Ground shadow -->
+  <ellipse cx="256" cy="452" rx="110" ry="22" fill="#000" opacity="0.1"/>
+
+  <!-- Pot -->
+  <g filter="url(#shadow)">
+    <path class="outline" fill="url(#potGrad)"
+          d="M148,356 h216
+             c0,44-48,80-108,80h0c-60,0-108-36-108-80z"/>
+    <path class="outline" fill="#8d4b16" d="M124,324 h264 a20,20 0 0 1 0,32 H124 a20,20 0 0 1 0-32z"/>
+  </g>
+
+  <!-- Soil -->
+  <ellipse class="outline" cx="256" cy="324" rx="118" ry="18" fill="#4e342e"/>
+
+  <!-- Stem -->
+  <path class="outline" fill="none" stroke="#2e7d32" stroke-width="10"
+        d="M256,324
+           C256,270 256,248 256,210
+           S260,148 256,130"/>
+
+  <!-- Leaves left -->
+  <path class="outline" fill="url(#leafGrad)"
+        d="M244,240
+           C190,220 170,190 162,162
+           C208,162 238,176 252,196
+           C258,208 256,226 244,240z"/>
+  <path class="outline" fill="url(#leafGrad)"
+        d="M238,195
+           C190,180 160,152 146,126
+           C190,128 222,142 240,164
+           C246,174 246,186 238,195z"/>
+
+  <!-- Leaves right -->
+  <path class="outline" fill="url(#leafGrad)"
+        d="M268,240
+           C322,220 342,190 350,162
+           C304,162 274,176 260,196
+           C254,208 256,226 268,240z"/>
+  <path class="outline" fill="url(#leafGrad)"
+        d="M274,195
+           C322,180 352,152 366,126
+           C322,128 290,142 272,164
+           C266,174 266,186 274,195z"/>
+
+  <!-- Face -->
+  <g transform="translate(0,-22)">
+    <circle cx="256" cy="210" r="22" fill="#2e7d32" class="outline"/>
+    <circle cx="248" cy="206" r="3" fill="#1f1f1f"/>
+    <circle cx="264" cy="206" r="3" fill="#1f1f1f"/>
+    <path d="M246,216 Q256,224 266,216" fill="none" stroke="#1f1f1f" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <!-- Left arm -->
+  <g transform="translate(0,0)">
+    <!-- shoulder to elbow -->
+    <path class="outline" fill="url(#armGrad)"
+          d="M210,230
+             c-26,12-44,28-56,50
+             c-10,18-10,36 6,44
+             c12,6 28,0 38-14
+             c10-14 16-30 20-46
+             c4-14 2-26 -8-34z"/>
+    <!-- forearm + fist -->
+    <path class="outline" fill="url(#armGrad)"
+          d="M148,316
+             c-10,10-16,22-12,32
+             c6,12 22,14 36,8
+             c10-4 18-12 24-20
+             c-12-8-24-14-48-20z"/>
+    <!-- bicep crease -->
+    <path d="M190,276 Q172,292 164,308" fill="none" stroke="#1f1f1f" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <!-- Right arm -->
+  <g transform="scale(-1,1) translate(-512,0)">
+    <path class="outline" fill="url(#armGrad)"
+          d="M210,230
+             c-26,12-44,28-56,50
+             c-10,18-10,36 6,44
+             c12,6 28,0 38-14
+             c10-14 16-30 20-46
+             c4-14 2-26 -8-34z"/>
+    <path class="outline" fill="url(#armGrad)"
+          d="M148,316
+             c-10,10-16,22-12,32
+             c6,12 22,14 36,8
+             c10-4 18-12 24-20
+             c-12-8-24-14-48-20z"/>
+    <path d="M190,276 Q172,292 164,308" fill="none" stroke="#1f1f1f" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <!-- Highlights -->
+  <path d="M224,232 Q220,214 236,204" fill="none" stroke="#ffffff" stroke-opacity="0.25" stroke-width="3"/>
+  <path d="M288,232 Q292,214 276,204" fill="none" stroke="#ffffff" stroke-opacity="0.25" stroke-width="3"/>
+</svg>
