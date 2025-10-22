@@ -30,6 +30,11 @@ app.get('/dashboard', (req, res) => {
 app.get('/profile', (req, res) => {
     res.sendFile(__dirname + '/public/profile.html');
 });
+
+// Route to serve leaderboard.html
+app.get('/leaderboard', (req, res) => {
+    res.sendFile(__dirname + '/public/Leaderboard.html');
+});
 //////////////////////////////////////
 //END ROUTES TO SERVE HTML FILES
 //////////////////////////////////////
@@ -193,6 +198,20 @@ app.get('/api/profile', authenticateToken, async (req, res) => {
     }
 });
 
+app.get('/api/leaderboard', authenticateToken, async (req, res) => {
+    const query = 'SELECT first_name, last_name, walk_hours FROM user WHERE walk_hours IS NOT NULL ORDER BY walk_hours DESC LIMIT 10';
+    try {
+        const connection = await createConnection();
+        const [rows] = await connection.execute(query);
+        await connection.end();
+
+        res.status(200).json(rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Error fetching leaderboard.' });
+    }
+});
+
 // Route: Get All Email Addresses
 app.get('/api/users', authenticateToken, async (req, res) => {
     try {
@@ -209,6 +228,8 @@ app.get('/api/users', authenticateToken, async (req, res) => {
         res.status(500).json({ message: 'Error retrieving email addresses.' });
     }
 });
+
+
 //////////////////////////////////////
 //END ROUTES TO HANDLE API REQUESTS
 //////////////////////////////////////
