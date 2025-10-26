@@ -13,7 +13,7 @@ const userDobEl = document.getElementById('user-dob');
 const logoutBtn = document.getElementById('logout-btn');
 const editProfileBtn = document.getElementById('edit-profile-btn');
 const goToDashboardBtn = document.getElementById('go-to-dashboard-btn');
-
+const viewLeaderboardBtn = document.getElementById('view-leaderboard-btn');
 // Load user profile data
 async function loadProfile() {
     try {
@@ -60,6 +60,11 @@ editProfileBtn.addEventListener('click', () => {
 // Go to dashboard
 goToDashboardBtn.addEventListener('click', () => {
     window.location.href = '/dashboard';
+});
+
+// View leaderboard
+viewLeaderboardBtn.addEventListener('click', () => {
+    window.location.href = '/leaderboard';
 });
 
 // Load profile when page loads

@@ -1,0 +1,15 @@
+.leaderboard-list {
+    list-style-type: none;
+    padding: 0;
+    background-color: aqua;
+}
+
+.leaderboard-list li {
+    padding: 8px 12px;
+    border-bottom: 1px solid #ccc;
+}
+
+.leaderboard-list li:hover {
+    background-color: lightblue;
+    cursor: pointer;
+}
