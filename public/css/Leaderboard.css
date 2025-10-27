@@ -1,15 +1,348 @@
-.leaderboard-list {
-    list-style-type: none;
+* {
+    margin: 0;
     padding: 0;
-    background-color: aqua;
+    box-sizing: border-box;
 }
 
-.leaderboard-list li {
-    padding: 8px 12px;
-    border-bottom: 1px solid #ccc;
+body {
+    font-family: 'Arial', sans-serif;
+    background: #F3F9D2;
+    min-height: 100vh;
+    color: #333;
+    padding: 20px;
 }
 
-.leaderboard-list li:hover {
-    background-color: lightblue;
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+    color: #2B4162;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.header p {
+    color: #2B4162;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-button {
+    background: #2B4162;
+    border: 2px solid #2B4162;
+    border-radius: 25px;
+    padding: 12px 25px;
+    font-size: 1rem;
     cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+}
+
+.nav-button:hover {
+    background: #162233;
+    border-color: #2B4162;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+.sorting-controls {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.sorting-controls h3 {
+    color: #2B4162;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.sort-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.sort-btn {
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 25px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #495057;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sort-btn:hover {
+    background: #e9ecef;
+    border-color: #1d4174;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.sort-btn.active {
+    background: #162233;
+    border-color: #1d4174;
+    color: white;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.sort-btn.active:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px #162233;
+}
+
+#leaderboard-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.loading-text {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #2B4162;
+    padding: 40px;
+    font-style: italic;
+}
+
+.leaderboard-list {
+    list-style: none;
+    padding: 0;
+}
+
+.leaderboard-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    margin-bottom: 15px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border-left: 5px solid #1d4174;
+}
+
+.leaderboard-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.leaderboard-item.rank-1 {
+    border-left-color: #FFD700;
+    background: linear-gradient(135deg, #fff9e6 0%, #fff 100%);
+}
+
+.leaderboard-item.rank-2 {
+    border-left-color: #C0C0C0;
+    background: linear-gradient(135deg, #f8f8f8 0%, #fff 100%);
+}
+
+.leaderboard-item.rank-3 {
+    border-left-color: #CD7F32;
+    background: linear-gradient(135deg, #fff4e6 0%, #fff 100%);
+}
+
+.rank-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.rank-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2B4162;
+    min-width: 60px;
+    text-align: center;
+}
+
+.rank-1 .rank-number {
+    color: #FFD700;
+    text-shadow: 1px 1px 2px rgba(255, 215, 0, 0.3);
+}
+
+.rank-2 .rank-number {
+    color: #C0C0C0;
+}
+
+.rank-3 .rank-number {
+    color: #CD7F32;
+}
+
+.user-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #621708;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.user-info {
+    flex-grow: 1;
+}
+
+.user-name {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #2B4162;
+    margin-bottom: 5px;
+}
+
+.user-email {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.score-info {
+    text-align: right;
+}
+
+.score {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2B4162;
+    margin-bottom: 5px;
+}
+
+.score-label {
+    font-size: 0.8rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.trophy-icon {
+    font-size: 2rem;
+    margin-right: 10px;
+}
+
+.rank-1 .trophy-icon {
+    color: #FFD700;
+}
+
+.rank-2 .trophy-icon {
+    color: #C0C0C0;
+}
+
+.rank-3 .trophy-icon {
+    color: #CD7F32;
+}
+
+.no-data {
+    text-align: center;
+    padding: 60px 20px;
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.no-data i {
+    font-size: 3rem;
+    color: #ddd;
+    margin-bottom: 20px;
+    display: block;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .nav-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .sorting-controls {
+        padding: 20px;
+    }
+    
+    .sort-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .sort-btn {
+        width: 100%;
+        max-width: 200px;
+        justify-content: center;
+    }
+    
+    .leaderboard-item {
+        padding: 15px;
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .rank-info {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .user-info {
+        text-align: center;
+    }
+    
+    .score-info {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .header {
+        padding: 20px;
+    }
+    
+    #leaderboard-container {
+        padding: 20px;
+    }
+    
+    .header h1 {
+        font-size: 1.8rem;
+    }
 }
